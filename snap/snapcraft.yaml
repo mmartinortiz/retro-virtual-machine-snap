@@ -1,0 +1,45 @@
+name: mmartinortiz-retro-virtual-machine
+title: 'Retro Virtual Machine'
+base: core18 # the base snap is the execution environment for this snap
+version: '2.0.beta-1.r7'
+architectures: ['amd64']
+icon: snap/gui/logo.png
+summary: Emulator of the Amstrad CPC and the ZX Spectrum home computers # 79 char long summary
+description: |
+  Retro Virtual Machine is an Amstrad and Spectrum emulator that not only offers
+  the capacity of emulating old machines, but also reproduces the old CRT look
+  and feel as well as the sounds of our beloved old machines.
+
+  This software is maintained and developed by Juan Carlos González Amestoy <rvm@retrovirtualmachine.org>.
+  You can find more details in its home page: https://www.retrovirtualmachine.org/en/
+
+  If you have issues with the Snap, feel free to open an issue in [its repository](https://github.com/mmartinortiz/retro-virtual-machine-snap)
+
+grade: stable
+confinement: strict
+
+apps:
+  retro-virtual-machine:
+    extensions: [gnome-3-34]
+    command: usr/bin/RetroVirtualMachine
+    desktop: usr/share/applications/rvm.desktop
+    plugs:
+      - desktop
+      - desktop-legacy
+      - wayland
+      - unity7
+      - home
+      - opengl
+      - audio-playback
+      - joystick
+
+parts:
+  retro-virtual-machine:
+    source: https://static.retrovm.org/release/beta1/linux/x64/RetroVirtualMachine.$SNAPCRAFT_PROJECT_VERSION.linux.x64.deb
+    plugin: dump
+    source-type: deb
+    stage-packages:
+      - libx11-6
+      - libxinerama1
+      - libgl1
+      - libxi6
