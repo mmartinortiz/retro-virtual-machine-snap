@@ -32,6 +32,7 @@ apps:
       - opengl
       - audio-playback
       - joystick
+      - bluez
 
 parts:
   retro-virtual-machine:
