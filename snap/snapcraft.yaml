@@ -24,6 +24,7 @@ apps:
     command: usr/bin/RetroVirtualMachine
     desktop: usr/share/applications/rvm.desktop
     plugs:
+      - alsa
       - desktop
       - desktop-legacy
       - wayland
@@ -44,3 +45,4 @@ parts:
       - libxinerama1
       - libgl1
       - libxi6
+      - libasound2
