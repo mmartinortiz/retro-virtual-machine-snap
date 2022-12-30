@@ -1,7 +1,7 @@
 name: mmartinortiz-retro-virtual-machine
 title: 'Retro Virtual Machine'
 base: core18 # the base snap is the execution environment for this snap
-version: '2.0.beta-1.r7'
+version: '2.1.0'
 architectures: ['amd64']
 icon: snap/gui/logo.png
 summary: Emulator of the Amstrad CPC and the ZX Spectrum home computers # 79 char long summary
@@ -36,7 +36,7 @@ apps:
 
 parts:
   retro-virtual-machine:
-    source: https://static.retrovm.org/release/beta1/linux/x64/RetroVirtualMachine.$SNAPCRAFT_PROJECT_VERSION.linux.x64.deb
+    source: https://static.retrovm.org/release/$SNAPCRAFT_PROJECT_VERSION/RetroVirtualMachine.$SNAPCRAFT_PROJECT_VERSION.Linux.x64.deb
     plugin: dump
     source-type: deb
     stage-packages:
