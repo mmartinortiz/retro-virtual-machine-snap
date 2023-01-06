@@ -10,7 +10,10 @@ The original website of Retro Virtual Machine is <https://www.retrovirtualmachin
 
 ```bash
 # Building
-snapcraft
+snapcraft build
+
+# Pack
+snapcraft pack
 
 # Install locally
 snap install --devmode mmartinortiz-retro-virtual-machine_2.1.0_amd64.snap
