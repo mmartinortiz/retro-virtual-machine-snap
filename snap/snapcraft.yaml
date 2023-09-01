@@ -1,7 +1,7 @@
 name: mmartinortiz-retro-virtual-machine
 title: 'Retro Virtual Machine'
 base: core22 # the base snap is the execution environment for this snap
-version: '2.1.7'
+version: '2.1.8'
 architectures: ['amd64']
 icon: snap/gui/logo.png
 summary: Emulator of the Amstrad CPC and the ZX Spectrum home computers # 79 char long summary
