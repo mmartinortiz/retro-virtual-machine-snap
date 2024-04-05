@@ -30,6 +30,7 @@ apps:
       - audio-playback
       - joystick
       - bluez
+      - pulseaudio
 
 parts:
   retro-virtual-machine:
