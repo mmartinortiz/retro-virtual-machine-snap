@@ -2,7 +2,8 @@ name: mmartinortiz-retro-virtual-machine
 title: 'Retro Virtual Machine'
 base: core22 # the base snap is the execution environment for this snap
 version: '2.1.11'
-architectures: ['amd64']
+architectures:
+  - build-on: amd64
 icon: snap/gui/logo.png
 summary: Emulator of the Amstrad CPC and the ZX Spectrum home computers # 79 char long summary
 description: |
@@ -18,30 +19,55 @@ description: |
 grade: stable
 confinement: strict
 
-apps:
-  retro-virtual-machine:
-    extensions: [gnome]
-    command: usr/bin/RetroVirtualMachine
-    desktop: usr/share/applications/rvm.desktop
-    plugs:
-      - alsa
-      - unity7
-      - home
-      - audio-playback
-      - joystick
-      - bluez
-      - pulseaudio
+layout:
+  /usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/alsa-lib:
+    bind: $SNAP/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/alsa-lib
+  /usr/share/alsa:
+    bind: $SNAP/usr/share/alsa
 
 parts:
+  alsa-mixin:
+    plugin: dump
+    source: https://github.com/diddlesnaps/snapcraft-alsa.git
+    source-subdir: snapcraft-assets
+    build-packages:
+      - libasound2-dev
+    stage-packages:
+      - libasound2
+      - libasound2-plugins
+
   retro-virtual-machine:
+    after: [ alsa-mixin ]
     source: https://static.retrovm.org/release/$SNAPCRAFT_PROJECT_VERSION/RetroVirtualMachine.$SNAPCRAFT_PROJECT_VERSION.Linux.x64.deb
     plugin: dump
     source-type: deb
+    organize:
+      retro-virtual-machinelib: retro-virtual-machine
+      retro-virtual-machine: usr/bin/RetroVirtualMachine
+    build-packages:
+      - libasound2-dev
     stage-packages:
-      - libx11-6
-      - libasound2
-      - libpulse0
+      - libgl1-mesa-dri
+      - xkb-data
 
-layout:
-    /usr/share/alsa:
-        bind: $SNAP/usr/share/alsa
+apps:
+  retro-virtual-machine:
+    command: usr/bin/RetroVirtualMachine
+    command-chain:
+      - snap/command-chain/alsa-launch
+    desktop: usr/share/applications/rvm.desktop
+    environment:
+      ALWAYS_USE_PULSEAUDIO: 1
+    plugs:
+      - audio-playback
+      - bluez
+      - desktop
+      - home
+      - joystick
+      - removable-media
+      - unity7
+      - opengl
+      - wayland
+      - x11
+    extensions:
+      - gnome
