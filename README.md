@@ -18,6 +18,11 @@ snapcraft pack
 # Install locally
 snap install --devmode mmartinortiz-retro-virtual-machine_2.1.0_amd64.snap
 
+# Test locally
+snap try
+snap try prime
+./prime/usr/bin/RetroVirtualMachine
+
 # pushing
 snapcraft login
 snapcraft push mmartinortiz-retro-virtual-machine_2.1.0_amd64.snap
