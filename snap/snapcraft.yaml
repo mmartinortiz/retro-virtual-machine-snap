@@ -54,7 +54,7 @@ apps:
   retro-virtual-machine:
     command: usr/bin/RetroVirtualMachine
     command-chain:
-      - /root/stage/snap/command-chain/alsa-launch
+      - snap/command-chain/alsa-launch
     desktop: usr/share/applications/rvm.desktop
     environment:
       ALWAYS_USE_PULSEAUDIO: 1
