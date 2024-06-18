@@ -1,7 +1,7 @@
 name: mmartinortiz-retro-virtual-machine
 title: 'Retro Virtual Machine'
 base: core22 # the base snap is the execution environment for this snap
-version: '2.1.13'
+version: '2.1.14'
 architectures:
   - build-on: amd64
 icon: snap/gui/logo.png
@@ -54,7 +54,7 @@ apps:
   retro-virtual-machine:
     command: usr/bin/RetroVirtualMachine
     command-chain:
-      - snap/command-chain/alsa-launch
+      - /root/stage/snap/command-chain/alsa-launch
     desktop: usr/share/applications/rvm.desktop
     environment:
       ALWAYS_USE_PULSEAUDIO: 1
