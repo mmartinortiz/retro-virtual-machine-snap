@@ -1,7 +1,7 @@
 name: mmartinortiz-retro-virtual-machine
-title: 'Retro Virtual Machine'
+title: "Retro Virtual Machine"
 base: core22 # the base snap is the execution environment for this snap
-version: '2.1.14'
+version: "2.1.16"
 architectures:
   - build-on: amd64
 icon: snap/gui/logo.png
@@ -37,7 +37,7 @@ parts:
       - libasound2-plugins
 
   retro-virtual-machine:
-    after: [ alsa-mixin ]
+    after: [alsa-mixin]
     source: https://static.retrovm.org/release/$SNAPCRAFT_PROJECT_VERSION/RetroVirtualMachine.$SNAPCRAFT_PROJECT_VERSION.Linux.x64.deb
     plugin: dump
     source-type: deb
